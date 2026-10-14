@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barn Trails — Support</title>
+<meta name="description" content="Barn Trails player support: contact us, find your Player ID, and manage your account.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#eceef1;
+    --card:#ffffff;
+    --ink:#2c313a;
+    --ink-soft:#5f6773;
+    --ink-faint:#9aa1ab;
+    --line:#e4e7eb;
+    --accent:#00bce4;
+    --accent-hover:#00a6cb;
+    --accent-soft:#e7f9fe;
+    --radius:8px;
+  }
+  *{box-sizing:border-box;}
+  html,body{height:100%;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.5;
+    min-height:100dvh;
+    display:flex;
+    justify-content:center;
+    padding:clamp(0px,3vw,40px);
+  }
+
+  .card{
+    background:var(--card);
+    width:100%;
+    max-width:660px;
+    border-radius:clamp(0px,1.5vw,14px);
+    box-shadow:0 1px 3px rgba(20,30,45,0.06), 0 12px 40px -18px rgba(20,30,45,0.18);
+    overflow:hidden;
+    align-self:flex-start;
+  }
+
+  /* top bar — mimics the in-app header */
+  .topbar{
+    display:flex;align-items:center;gap:10px;
+    padding:14px 22px;
+    border-bottom:1px solid var(--line);
+    background:#fbfcfd;
+  }
+  .topbar .mark{
+    width:26px;height:26px;border-radius:7px;
+    background:linear-gradient(135deg,var(--accent),#33cff0);
+    display:grid;place-items:center;color:#fff;flex:0 0 auto;
+  }
+  .topbar .name{font-weight:700;font-size:14px;letter-spacing:0.01em;}
+  .topbar .name span{color:var(--ink-faint);font-weight:500;}
+
+  .body{padding:clamp(24px,5vw,44px) clamp(20px,5vw,48px);}
+
+  h1{
+    font-size:clamp(20px,3.6vw,26px);
+    font-weight:700;
+    line-height:1.28;
+    margin:0 0 10px;
+    letter-spacing:-0.01em;
+  }
+  h2{
+    font-size:15px;
+    font-weight:600;
+    margin:28px 0 10px;
+  }
+  .lede{
+    color:var(--ink-soft);
+    font-size:14.5px;
+    margin:0 0 24px;
+    max-width:56ch;
+  }
+  p,li{font-size:14.5px;color:var(--ink-soft);}
+  p{margin:0 0 10px;}
+  ul{margin:0;padding-left:20px;}
+  li + li{margin-top:4px;}
+  strong{color:var(--ink);font-weight:600;}
+
+  .contact{
+    display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    padding:16px;border-radius:var(--radius);
+    background:var(--accent-soft);border:1px solid #c7f0fa;
+  }
+  .contact .label{font-size:12.5px;color:var(--ink-soft);margin-bottom:2px;}
+  .contact .email{font-size:15px;font-weight:600;color:var(--ink);word-break:break-all;}
+  .btn{
+    display:inline-block;padding:10px 16px;border-radius:var(--radius);
+    background:var(--accent);color:#fff;text-decoration:none;font-size:14px;font-weight:600;
+    transition:background .15s ease;
+  }
+  .btn:hover{background:var(--accent-hover);}
+
+  .links{display:flex;flex-direction:column;gap:2px;}
+  .links a{
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+    padding:14px 16px;border:1px solid var(--line);border-radius:var(--radius);
+    color:var(--ink);text-decoration:none;font-size:14.5px;font-weight:500;
+    background:#fbfcfd;transition:border-color .15s ease,background .15s ease;
+  }
+  .links a + a{margin-top:10px;}
+  .links a:hover{border-color:var(--accent);background:#fff;}
+  .links a .chev{color:var(--ink-faint);transition:transform .15s ease;}
+  .links a:hover .chev{transform:translateX(2px);color:var(--accent);}
+
+  .footnote{margin-top:28px;text-align:center;font-size:12.5px;color:var(--ink-faint);line-height:1.7;}
+  .footnote a{color:var(--accent);text-decoration:none;}
+  .footnote a:hover{text-decoration:underline;}
+</style>
+</head>
+<body>
+  <main class="card">
+    <div class="topbar">
+      <span class="mark" aria-hidden="true">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M3 10.5 12 4l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1v-9.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+      </span>
+      <div class="name">Barn Trails <span>· Support</span></div>
+    </div>
+
+    <div class="body">
+      <h1>Player Support</h1>
+      <p class="lede">Having trouble with Barn Trails? Send us a message and our team will get back to you by email.</p>
+
+      <div class="contact">
+        <div>
+          <div class="label">Email support</div>
+          <div class="email">customer_service@neun.ph</div>
+        </div>
+        <a class="btn" href="mailto:customer_service@neun.ph?subject=Barn%20Trails%20Support">Contact support</a>
+      </div>
+
+      <h2>Help us help you faster</h2>
+      <p>Please include the following in your message:</p>
+      <ul>
+        <li><strong>Player ID</strong>: find this in-game under Settings → Account.</li>
+        <li><strong>Device model</strong> and <strong>Android version</strong>.</li>
+        <li>A short description of the issue, and the level number if it happened during play.</li>
+        <li>Screenshots or a screen recording, if you have them.</li>
+      </ul>
+
+      <h2>Purchases</h2>
+      <p>Purchases such as Remove Ads are processed by Google Play. If a purchase didn't arrive, include your Google Play order number (it starts with <strong>GPA.</strong> and appears in your purchase receipt email) along with your Player ID.</p>
+
+      <h2>Your account &amp; data</h2>
+      <div class="links">
+        <a href="privacy-policy.html">
+          Privacy Policy
+          <span class="chev" aria-hidden="true">→</span>
+        </a>
+        <a href="account-deletion.html">
+          Account Deletion Instructions
+          <span class="chev" aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <div class="footnote">
+        <a href="index.html">← Back to Barn Trails</a>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
