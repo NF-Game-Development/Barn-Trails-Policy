@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Barn Trails — Support</title>
-<meta name="description" content="Barn Trails player support: contact us, find your Player ID, and manage your account.">
+<title>Support — Barn Trails</title>
+<meta name="description" content="Contact Barn Trails player support.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -16,9 +16,11 @@
     --ink-soft:#5f6773;
     --ink-faint:#9aa1ab;
     --line:#e4e7eb;
+    --field-line:#d3d8de;
     --accent:#00bce4;
     --accent-hover:#00a6cb;
     --accent-soft:#e7f9fe;
+    --required:#f5455c;
     --radius:8px;
   }
   *{box-sizing:border-box;}
@@ -60,6 +62,11 @@
   }
   .topbar .name{font-weight:700;font-size:14px;letter-spacing:0.01em;}
   .topbar .name span{color:var(--ink-faint);font-weight:500;}
+  .topbar .back{
+    margin-left:auto;color:var(--ink-soft);text-decoration:none;
+    font-size:13px;font-weight:500;
+  }
+  .topbar .back:hover{color:var(--accent);}
 
   .body{padding:clamp(24px,5vw,44px) clamp(20px,5vw,48px);}
 
@@ -69,53 +76,91 @@
     line-height:1.28;
     margin:0 0 10px;
     letter-spacing:-0.01em;
-  }
-  h2{
-    font-size:15px;
-    font-weight:600;
-    margin:28px 0 10px;
+    text-wrap:balance;
   }
   .lede{
     color:var(--ink-soft);
     font-size:14.5px;
-    margin:0 0 24px;
+    margin:0 0 30px;
     max-width:56ch;
   }
-  p,li{font-size:14.5px;color:var(--ink-soft);}
-  p{margin:0 0 10px;}
-  ul{margin:0;padding-left:20px;}
-  li + li{margin-top:4px;}
-  strong{color:var(--ink);font-weight:600;}
 
-  .contact{
-    display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
-    padding:16px;border-radius:var(--radius);
-    background:var(--accent-soft);border:1px solid #c7f0fa;
-  }
-  .contact .label{font-size:12.5px;color:var(--ink-soft);margin-bottom:2px;}
-  .contact .email{font-size:15px;font-weight:600;color:var(--ink);word-break:break-all;}
-  .btn{
-    display:inline-block;padding:10px 16px;border-radius:var(--radius);
-    background:var(--accent);color:#fff;text-decoration:none;font-size:14px;font-weight:600;
-    transition:background .15s ease;
-  }
-  .btn:hover{background:var(--accent-hover);}
+  form{display:flex;flex-direction:column;gap:26px;}
+  .field{display:flex;flex-direction:column;gap:8px;}
+  .q{font-size:15px;font-weight:600;color:var(--ink);}
+  .q .req{color:var(--required);margin-right:5px;}
+  .q .opt{color:var(--ink-faint);font-weight:400;font-size:13px;margin-left:4px;}
+  .hint{font-size:12.5px;color:var(--ink-faint);}
 
-  .links{display:flex;flex-direction:column;gap:2px;}
-  .links a{
-    display:flex;align-items:center;justify-content:space-between;gap:12px;
-    padding:14px 16px;border:1px solid var(--line);border-radius:var(--radius);
-    color:var(--ink);text-decoration:none;font-size:14.5px;font-weight:500;
-    background:#fbfcfd;transition:border-color .15s ease,background .15s ease;
+  input[type=text],input[type=email],textarea{
+    width:100%;
+    font-family:inherit;font-size:14.5px;color:var(--ink);
+    background:#fff;
+    border:1px solid var(--field-line);
+    border-radius:var(--radius);
+    padding:11px 13px;
+    transition:border-color .15s ease, box-shadow .15s ease;
   }
-  .links a + a{margin-top:10px;}
-  .links a:hover{border-color:var(--accent);background:#fff;}
-  .links a .chev{color:var(--ink-faint);transition:transform .15s ease;}
-  .links a:hover .chev{transform:translateX(2px);color:var(--accent);}
+  textarea{resize:vertical;min-height:120px;line-height:1.55;}
+  input::placeholder,textarea::placeholder{color:#b3b9c1;}
+  input:focus,textarea:focus{
+    outline:none;border-color:var(--accent);
+    box-shadow:0 0 0 3px var(--accent-soft);
+  }
 
-  .footnote{margin-top:28px;text-align:center;font-size:12.5px;color:var(--ink-faint);line-height:1.7;}
+  /* single-choice list — matches the survey look */
+  .checks{display:flex;flex-direction:column;gap:2px;}
+  .check{
+    display:flex;align-items:flex-start;gap:11px;
+    padding:8px 6px;border-radius:6px;cursor:pointer;
+    transition:background .12s ease;
+  }
+  .check:hover{background:#f6f8fa;}
+  .check input{
+    appearance:none;flex:0 0 auto;
+    width:19px;height:19px;margin-top:1px;
+    border:1.5px solid #c4cad2;border-radius:50%;background:#fff;cursor:pointer;
+    position:relative;transition:background .12s ease,border-color .12s ease;
+  }
+  .check input:checked{border-color:var(--accent);}
+  .check input:checked::after{
+    content:"";position:absolute;left:3.5px;top:3.5px;
+    width:9px;height:9px;border-radius:50%;background:var(--accent);
+  }
+  .check input:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+  .check span{font-size:14px;color:var(--ink-soft);line-height:1.45;}
+  .check input:checked + span{color:var(--accent);font-weight:500;}
+
+  .actions{display:flex;justify-content:center;padding-top:4px;}
+  .submit{
+    min-width:220px;
+    border:none;cursor:pointer;
+    padding:13px 40px;border-radius:var(--radius);
+    font-family:inherit;font-size:15px;font-weight:600;letter-spacing:0.01em;
+    color:#fff;background:var(--accent);
+    box-shadow:0 6px 16px -6px rgba(0,188,228,0.6);
+    transition:background .15s ease, transform .1s ease, box-shadow .2s ease;
+  }
+  .submit:hover{background:var(--accent-hover);}
+  .submit:active{transform:translateY(1px);}
+  .submit:disabled{background:#cfd5db;color:#fff;box-shadow:none;cursor:not-allowed;}
+
+  .footnote{margin-top:24px;text-align:center;font-size:12.5px;color:var(--ink-faint);line-height:1.7;}
   .footnote a{color:var(--accent);text-decoration:none;}
   .footnote a:hover{text-decoration:underline;}
+
+  /* success */
+  .success{display:none;text-align:center;padding:14px 0;}
+  .success.show{display:block;}
+  form.hide,.lede.hide,h1.hide{display:none;}
+  .seal{
+    width:64px;height:64px;margin:0 auto 18px;border-radius:50%;
+    background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;
+  }
+  .success h2{font-size:20px;font-weight:700;margin:0 0 10px;}
+  .success p{color:var(--ink-soft);font-size:14px;margin:0 auto 18px;max-width:42ch;}
+
+  @media (prefers-reduced-motion:reduce){*{transition:none !important;}}
 </style>
 </head>
 <body>
@@ -124,49 +169,134 @@
       <span class="mark" aria-hidden="true">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M3 10.5 12 4l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1v-9.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
       </span>
-      <div class="name">Barn Trails <span>· Support</span></div>
+      <div class="name">Barn Trails <span>· Player Support</span></div>
+      <a class="back" href="index.html">← Back to Barn Trails</a>
     </div>
 
     <div class="body">
-      <h1>Player Support</h1>
-      <p class="lede">Having trouble with Barn Trails? Send us a message and our team will get back to you by email.</p>
+      <h1>Contact Support</h1>
+      <p class="lede">
+        Having trouble with Barn Trails? Tell us what happened and our team
+        will get back to you by email.
+      </p>
 
-      <div class="contact">
-        <div>
-          <div class="label">Email support</div>
-          <div class="email">customer_service@neun.ph</div>
+      <form id="supportForm" novalidate>
+        <div class="field">
+          <div class="q"><span class="req">*</span>Email</div>
+          <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+          <span class="hint">We'll reply to this address.</span>
         </div>
-        <a class="btn" href="mailto:customer_service@neun.ph?subject=Barn%20Trails%20Support">Contact support</a>
+
+        <div class="field">
+          <div class="q">Player ID <span class="opt">(optional, but helps us find your account)</span></div>
+          <input id="uid" name="uid" type="text" placeholder="e.g. V8t2Qk7Lp0Rn4Xa9Mc3Ye6Bz1Wd5" autocomplete="off" spellcheck="false">
+          <span class="hint">Find this in-game under Settings → Account.</span>
+        </div>
+
+        <div class="field">
+          <div class="q"><span class="req">*</span>What do you need help with?</div>
+          <div class="checks">
+            <label class="check"><input type="radio" name="topic" value="gameplay" required><span>Gameplay or a level issue</span></label>
+            <label class="check"><input type="radio" name="topic" value="purchase"><span>A purchase (e.g. Remove Ads)</span></label>
+            <label class="check"><input type="radio" name="topic" value="account"><span>Account, sign-in, or lost progress</span></label>
+            <label class="check"><input type="radio" name="topic" value="bug"><span>Bug or crash</span></label>
+            <label class="check"><input type="radio" name="topic" value="other"><span>Other</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="q"><span class="req">*</span>Message</div>
+          <textarea id="message" name="message" placeholder="Describe the issue. Include the level number if it happened during play." required></textarea>
+          <span class="hint">For purchase issues, include your Google Play order number (starts with GPA.).</span>
+        </div>
+
+        <div class="field">
+          <div class="q">Device <span class="opt">(optional)</span></div>
+          <input id="device" name="device" type="text" placeholder="e.g. Samsung Galaxy A54, Android 14" autocomplete="off">
+        </div>
+
+        <div class="actions">
+          <button class="submit" id="submitBtn" type="submit">Send Message</button>
+        </div>
+      </form>
+
+      <div class="success" id="success" aria-live="polite">
+        <div class="seal" aria-hidden="true">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h2>Message Sent</h2>
+        <p>Thanks for reaching out. Our team will reply to the email address you provided.</p>
+        <p style="font-size:12.5px;color:var(--ink-faint);">You may now close this page.</p>
       </div>
 
-      <h2>Help us help you faster</h2>
-      <p>Please include the following in your message:</p>
-      <ul>
-        <li><strong>Player ID</strong>: find this in-game under Settings → Account.</li>
-        <li><strong>Device model</strong> and <strong>Android version</strong>.</li>
-        <li>A short description of the issue, and the level number if it happened during play.</li>
-        <li>Screenshots or a screen recording, if you have them.</li>
-      </ul>
-
-      <h2>Purchases</h2>
-      <p>Purchases such as Remove Ads are processed by Google Play. If a purchase didn't arrive, include your Google Play order number (it starts with <strong>GPA.</strong> and appears in your purchase receipt email) along with your Player ID.</p>
-
-      <h2>Your account &amp; data</h2>
-      <div class="links">
-        <a href="privacy-policy.html">
-          Privacy Policy
-          <span class="chev" aria-hidden="true">→</span>
-        </a>
-        <a href="account-deletion.html">
-          Account Deletion Instructions
-          <span class="chev" aria-hidden="true">→</span>
-        </a>
-      </div>
-
-      <div class="footnote">
-        <a href="index.html">← Back to Barn Trails</a>
-      </div>
+      <p class="footnote" id="footnote">
+        Prefer email? <a href="mailto:customer_service@neun.ph">customer_service@neun.ph</a><br>
+        <a href="privacy-policy.html">Privacy Policy</a> · <a href="account-deletion.html">Account Deletion</a>
+      </p>
     </div>
   </main>
+
+<script>
+  const form = document.getElementById('supportForm');
+  const btn = document.getElementById('submitBtn');
+
+  // Same Web3Forms key as account-deletion.html — submissions go to the
+  // address that key is registered to.
+  const WEB3FORMS_ACCESS_KEY = '13ef61e5-9c29-4b47-a887-959567784774';
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if(!form.reportValidity()) return;
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    const payload = {
+      email: form.email.value.trim(),
+      uid: form.uid.value.trim(),
+      topic: form.querySelector('input[name="topic"]:checked').value,
+      message: form.message.value.trim(),
+      device: form.device.value.trim(),
+      platform: 'android' // hardcoded for Play Store launch; add a selector when more platforms ship
+    };
+
+    try {
+      await submitSupportRequest(payload);
+
+      form.classList.add('hide');
+      document.querySelector('h1').classList.add('hide');
+      document.querySelector('.lede').classList.add('hide');
+      document.getElementById('footnote').style.display = 'none';
+      document.getElementById('success').classList.add('show');
+    } catch (err) {
+      console.error(err);
+      btn.disabled = false;
+      btn.textContent = 'Send Message';
+      alert('Something went wrong sending your message. Please try again or email customer_service@neun.ph.');
+    }
+  });
+
+  async function submitSupportRequest(payload){
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        access_key: WEB3FORMS_ACCESS_KEY,
+        subject: 'Barn Trails — Support Request (' + payload.topic + ')',
+        from_name: 'Barn Trails Support Form',
+        replyto: payload.email,
+        account_email: payload.email,
+        player_id: payload.uid || '(not given)',
+        topic: payload.topic,
+        message: payload.message,
+        device: payload.device || '(not given)',
+        platform: payload.platform,
+        submitted_at: new Date().toISOString()
+      })
+    });
+    const data = await res.json();
+    if (!data.success) throw new Error(data.message || 'Email delivery failed');
+    return data;
+  }
+</script>
 </body>
 </html>
